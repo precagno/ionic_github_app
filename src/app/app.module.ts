@@ -3,10 +3,10 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpClientModule} from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { GithubProvider } from '../providers/github/github';
-
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { GithubProvider } from '../providers/github/github';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +25,7 @@ import { GithubProvider } from '../providers/github/github';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GithubProvider
+    GithubProvider,
   ]
 })
 export class AppModule {}
