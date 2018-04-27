@@ -22,7 +22,8 @@ export class ProfileSearchResultsPage {
    this.username=this.navParams.get('username');
    
    this.github.getUserData(this.username).subscribe(data=>{
-     this.user=data;
+     this.user = data;
+     console.log( data );
    });
 
    /*this.github.getUserMockData(this.username).subscribe((data:User)=>{

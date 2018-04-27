@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators';
 
 import { User } from '../../models/user.interface'; 
 import { USER_LIST } from '../../mocks/user.mock';
@@ -20,12 +18,10 @@ export class GithubProvider {
   constructor(public http: HttpClient) {
   }
 
-  getUserData(username: string):Observable<any>{
-    console.log(this.baseUrl);
-
-    //return this.http.get(this.baseUrl);
-
-    return null;
+  getUserData(username: string):Observable<User>{
+    return this.http.get(`${this.baseUrl}/${username}`).pipe(
+      map((res:User)=>res)
+    );
   }
 
   getUserMockData(username: string):Observable<User>{

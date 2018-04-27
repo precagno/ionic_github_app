@@ -1,9 +1,11 @@
 <ion-item *ngIf='user' text-wrap>
   <ion-avatar item-start>
-    <img [src]="user.avatar_url" alt="" />
+    <img [src]="user.avatar_url"/>
   </ion-avatar>
-  <h2>{{user.name}}</h2>
-  <h3>{{user.company}}</h3>
-  <p>{{user.location}}</p>
-  <p text-wrap>{{user.bio}}</p>
+  
+  <p *ngIf='user.name'><ion-icon name="person" margin-right></ion-icon>Username: {{ user.name }}</p>
+  <p *ngIf='user.company'><ion-icon name="logo-usd" margin-right></ion-icon>Company: {{ user.company }}</p>
+  <p *ngIf='user.location'><ion-icon name="globe" margin-right></ion-icon>Location: {{ user.location }}</p>
+  <p *ngIf='user.email'><ion-icon name="mail" margin-right></ion-icon>Email: {{ user.email }}</p>
+  <p text-wrap *ngIf='user.bio'><ion-icon name="clipboard" margin-right></ion-icon>Bio: {{ user.bio }}</p>  
 </ion-item>
