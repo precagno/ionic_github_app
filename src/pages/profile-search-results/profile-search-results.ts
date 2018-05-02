@@ -23,7 +23,15 @@ export class ProfileSearchResultsPage {
    
    this.github.getUserData(this.username).subscribe(data=>{
      this.user = data;
-     console.log( data );
+     this.logData(data);
+   },error=>{
+     this.logData(error);
+   });
+
+   this.github.getRepositoryInformation(this.username).subscribe(data=>{
+     this.repositories=data;
+   },error=>{
+     this.logData(error)
    });
 
    /*this.github.getUserMockData(this.username).subscribe((data:User)=>{
@@ -32,5 +40,10 @@ export class ProfileSearchResultsPage {
    this.github.getRepositoryMockData(this.username).subscribe((data:Repository[])=>{
       this.repositories=data;
    });*/
+   
+  }
+
+  private logData(data:any):void{
+    console.log(data);
   }
 }
